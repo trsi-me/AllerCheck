@@ -1,0 +1,23 @@
+{
+  "model_type": "binary_rf_ingredient",
+  "threshold": 0.4,
+  "n_samples": 398,
+  "target_map": {
+    "does not contain": 0,
+    "contains": 1
+  },
+  "status_labels": {
+    "0": {
+      "ar": "آمن",
+      "en": "Safe",
+      "meaning": "does not contain (dataset)"
+    },
+    "1": {
+      "ar": "غير آمن",
+      "en": "Not safe",
+      "meaning": "contains (dataset)"
+    }
+  },
+  "train_accuracy": 0.9716981132075472,
+  "test_accuracy": 0.8875
+}

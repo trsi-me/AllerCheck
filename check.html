@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="i18n-title-key" content="meta.check">
+    <title>Check Product - AllerCheck</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="header-content">
+                <a href="index.html" class="logo">AllerCheck</a>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                    <a href="check.html" class="nav-link active" data-i18n="nav.check">Check Product</a>
+                    <a href="profile.html" class="nav-link" data-i18n="nav.profile">Profile</a>
+                    <a href="history.html" class="nav-link" data-i18n="nav.history">History</a>
+                    <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Dashboard</a>
+                    <a href="about.html" class="nav-link" data-i18n="nav.about">About</a>
+                </nav>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn" data-set-lang="en" data-i18n="lang.switchEn">English</button>
+                    <button type="button" class="lang-btn" data-set-lang="ar" data-i18n="lang.switchAr">Arabic</button>
+                </div>
+            </div>
+        </header>
+        <main class="main-wrapper">
+            <section class="check-panel full-width">
+                <div class="panel-content">
+                    <h2 class="panel-title" data-i18n="check.panelSafe">SAFE TO CONSUME</h2>
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" id="productName" class="search-input" data-i18n-placeholder="check.placeholderProduct" placeholder="Enter Product Name..." list="productSuggestions" autocomplete="off">
+                            <datalist id="productSuggestions"></datalist>
+                            <button type="button" id="checkBtn" class="search-button" data-i18n="check.btnCheck">Check</button>
+                        </div>
+                        <div class="ingredient-optional">
+                            <label for="ingredientText" class="optional-label" data-i18n="check.optionalLabel">Optional: Paste ingredients list for better accuracy</label>
+                            <textarea id="ingredientText" class="ingredient-textarea" data-i18n-placeholder="check.ingredientPlaceholder" placeholder="e.g. wheat flour, milk, eggs, butter..." rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="result-display" id="resultSection" style="display: none;">
+                        <div id="resultContent" class="result-box"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="allergies-panel full-width">
+                <div class="panel-content">
+                    <h2 class="panel-title" data-i18n="check.panelAllergies">YOUR ALLERGIES</h2>
+                    <div class="user-info">
+                        <div class="user-input-wrapper">
+                            <label for="userName" class="user-label" data-i18n="check.yourName">Your Name</label>
+                            <input type="text" id="userName" class="user-input" data-i18n-placeholder="check.namePlaceholder" placeholder="Enter your name">
+                        </div>
+                    </div>
+                    <div class="allergens-selection">
+                        <div class="allergens-grid" id="allergensGrid">
+                            <label class="allergen-pill" data-i18n-allergen="Peanuts"><input type="checkbox" value="Peanuts" class="allergen-checkbox"><span>Peanuts</span></label>
+                            <label class="allergen-pill" data-i18n-allergen="Milk"><input type="checkbox" value="Milk" class="allergen-checkbox"><span>Milk</span></label>
+                            <label class="allergen-pill" data-i18n-allergen="Eggs"><input type="checkbox" value="Eggs" class="allergen-checkbox"><span>Eggs</span></label>
+                            <label class="allergen-pill" data-i18n-allergen="Fish"><input type="checkbox" value="Fish" class="allergen-checkbox"><span>Fish</span></label>
+                            <label class="allergen-pill" data-i18n-allergen="Nuts"><input type="checkbox" value="Nuts" class="allergen-checkbox"><span>Nuts</span></label>
+                            <label class="allergen-pill" data-i18n-allergen="Wheat"><input type="checkbox" value="Wheat" class="allergen-checkbox"><span>Wheat</span></label>
+                            <label class="allergen-pill" data-i18n-allergen="Soy"><input type="checkbox" value="Soy" class="allergen-checkbox"><span>Soy</span></label>
+                            <label class="allergen-pill" data-i18n-allergen="Sesame"><input type="checkbox" value="Sesame" class="allergen-checkbox"><span>Sesame</span></label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="i18n-title-key" content="meta.dashboard">
+    <title>Dashboard - AllerCheck</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="header-content">
+                <a href="index.html" class="logo">AllerCheck</a>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                    <a href="check.html" class="nav-link" data-i18n="nav.check">Check Product</a>
+                    <a href="profile.html" class="nav-link" data-i18n="nav.profile">Profile</a>
+                    <a href="history.html" class="nav-link" data-i18n="nav.history">History</a>
+                    <a href="dashboard.html" class="nav-link active" data-i18n="nav.dashboard">Dashboard</a>
+                    <a href="about.html" class="nav-link" data-i18n="nav.about">About</a>
+                </nav>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn" data-set-lang="en" data-i18n="lang.switchEn">English</button>
+                    <button type="button" class="lang-btn" data-set-lang="ar" data-i18n="lang.switchAr">Arabic</button>
+                </div>
+            </div>
+        </header>
+        <main class="main-wrapper single-column">
+            <section class="profile-panel full-width">
+                <div class="panel-content">
+                    <h2 class="panel-title" data-i18n="dashboard.title">STATISTICS DASHBOARD</h2>
+                    <p class="panel-description" data-i18n="dashboard.desc">Overview of your allergen check activity and system status.</p>
+                    <div class="stats-grid" id="statsGrid"></div>
+                    <div class="stats-grid" id="systemStats" style="margin-top:20px"></div>
+                    <h3 class="subsection-title" style="margin-top:30px" data-i18n="dashboard.freq">Allergen Frequency (in warnings)</h3>
+                    <div class="history-list" id="allergenFreq"></div>
+                    <h3 class="subsection-title" style="margin-top:30px" data-i18n="dashboard.favs">Saved Favorites</h3>
+                    <div class="favorites-list" id="favoritesList"></div>
+                    <p id="emptyFavs" style="display:none; color:var(--color-light-grey)" data-i18n="dashboard.emptyFavs">No favorites yet. Add safe products from check results.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="i18n.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

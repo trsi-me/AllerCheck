@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="i18n-title-key" content="meta.about">
+    <title>About - AllerCheck</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="header-content">
+                <a href="index.html" class="logo">AllerCheck</a>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                    <a href="check.html" class="nav-link" data-i18n="nav.check">Check Product</a>
+                    <a href="profile.html" class="nav-link" data-i18n="nav.profile">Profile</a>
+                    <a href="history.html" class="nav-link" data-i18n="nav.history">History</a>
+                    <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Dashboard</a>
+                    <a href="about.html" class="nav-link active" data-i18n="nav.about">About</a>
+                </nav>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn" data-set-lang="en" data-i18n="lang.switchEn">English</button>
+                    <button type="button" class="lang-btn" data-set-lang="ar" data-i18n="lang.switchAr">Arabic</button>
+                </div>
+            </div>
+        </header>
+        <main class="main-wrapper single-column">
+            <section class="about-panel full-width">
+                <div class="panel-content">
+                    <h2 class="panel-title" data-i18n="about.title">About AllerCheck</h2>
+                    <div class="about-content">
+                        <p class="about-lead" data-i18n="about.lead">AllerCheck is a real AI-powered food allergen analysis system...</p>
+
+                        <h3 data-i18n="about.how">How It Works</h3>
+                        <ol>
+                            <li data-i18n="about.li1">Profile: Add your allergens...</li>
+                            <li data-i18n="about.li2">Check: Enter a product name...</li>
+                            <li data-i18n="about.li3">Analysis: The system uses...</li>
+                            <li data-i18n="about.li4">Result: You get a clear result...</li>
+                        </ol>
+
+                        <h3 data-i18n="about.model">AI Model</h3>
+                        <p data-i18n="about.modelIntro">The allergen detection model...</p>
+                        <ul>
+                            <li data-i18n="about.ds1">food_ingredients...</li>
+                            <li data-i18n="about.ds2">allergies_10k...</li>
+                            <li data-i18n="about.ds3">Allergen_Status...</li>
+                        </ul>
+                        <p data-i18n="about.modelTech">The model uses TF-IDF...</p>
+
+                        <h3 data-i18n="about.features">Features</h3>
+                        <ul>
+                            <li data-i18n="about.f1">Real AI analysis...</li>
+                            <li data-i18n="about.f2">Database lookup...</li>
+                            <li data-i18n="about.f3">Ingredient text input...</li>
+                            <li data-i18n="about.f4">Product suggestions...</li>
+                            <li data-i18n="about.f5">Profile persistence...</li>
+                            <li data-i18n="about.f6">Scan History...</li>
+                            <li data-i18n="about.f7">Statistics Dashboard...</li>
+                            <li data-i18n="about.f8">Favorites...</li>
+                            <li data-i18n="about.f9">Export Report...</li>
+                        </ul>
+
+                        <h3 data-i18n="about.privacy">Data & Privacy</h3>
+                        <p data-i18n="about.privacyText">Your profile data...</p>
+
+                        <h3 data-i18n="about.setup">Setup</h3>
+                        <ol>
+                            <li data-i18n="about.s1">Install dependencies...</li>
+                            <li data-i18n="about.s2">Train the model...</li>
+                            <li data-i18n="about.s3">Initialize database...</li>
+                            <li data-i18n="about.s4">Run server...</li>
+                            <li data-i18n="about.s5">Open http://localhost:5000</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="i18n.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof AllerCheckI18n !== 'undefined') AllerCheckI18n.initI18n();
+        });
+    </script>
+</body>
+</html>

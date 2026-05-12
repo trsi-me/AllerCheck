@@ -1,0 +1,19 @@
+# AllerCheck على Render — اربط الريبو ثم New Blueprint أو أنشئ Web Service يدوياً.
+# إذا جذر Git ليس مجلد AllerCheck (مثلاً الريبو = VSCode كاملاً)، عيّن في لوحة Render:
+#   Root Directory = Projects/AllerCheck
+# أو أضف تحت الخدمة: rootDir: Projects/AllerCheck
+
+services:
+  - type: web
+    name: allercheck
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r requirements.txt && python train_model.py
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 2 --timeout 120 --access-logfile - --error-logfile - wsgi:application
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: FLASK_ENV
+        value: production
