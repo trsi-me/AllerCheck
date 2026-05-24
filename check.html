@@ -73,5 +73,86 @@
     </div>
     <script src="i18n.js"></script>
     <script src="script.js"></script>
+<script src="i18n.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkBtn = document.getElementById('checkBtn');
+        const productNameInput = document.getElementById('productName');
+        const ingredientInput = document.getElementById('ingredientText'); // مسكنا الخانة الثانية هنا بالـ ID حقها
+
+        if (checkBtn && productNameInput) {
+            // نستخدم خاصية الـ Capture (وضع true) عشان نضمن تشغيل كودنا أول واحد غصب قبل ملف script.js القديم
+            checkBtn.addEventListener('click', async function(event) {
+                const productText = productNameInput.value.trim();
+                const ingredientText = ingredientInput ? ingredientInput.value.trim() : "";
+                
+                // تعبير نمطي يكشف وجود أي حرف عربي
+                const arabicPattern = /[\u0600-\u06FF]/;
+                
+                // نتحقق إذا كان اسم المنتج أو قائمة المكونات يحتويان على عربي
+                const isProductArabic = arabicPattern.test(productText);
+                const isIngredientArabic = arabicPattern.test(ingredientText);
+                
+                if (isProductArabic || isIngredientArabic) {
+                    // 1. إيقاف الفحص القديم فوراً لمنع الخطأ البرمجي في الخلفية
+                    event.preventDefault();
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+                    
+                    // 2. سؤال المستخدم بنظام التأكيد (Confirm)
+                    const userWantsTranslate = confirm(
+                        "عذراً، يجب فحص المنتجات والمكونات باللغة الإنجليزية لضمان الدقة.\n\nهل تريد تحويل النصوص العربية إلى الإنجليزية تلقائياً؟\n\nWould you like to translate the text to English automatically?"
+                    );
+                    
+                    if (userWantsTranslate) {
+                        const originalText = checkBtn.innerText;
+                        checkBtn.innerText = "..."; // حركة تدل على جاري التحميل والترجمة
+                        
+                        try {
+                            // دالة داخلية سريعة ومجانية للترجمة الفورية من قوقل مباشرة في الواجهة
+                            async function translateText(text) {
+                                if (!text || !arabicPattern.test(text)) return text;
+                                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ar&tl=en&dt=t&q=${encodeURIComponent(text)}`;
+                                const response = await fetch(url);
+                                const json = await response.json();
+                                return json[0][0][0];
+                            }
+                            
+                            // 3. ترجمة الخانتين معاً بشكل متوازي وسريع جداً
+                            if (isProductArabic) {
+                                productNameInput.value = await translateText(productText);
+                            }
+                            
+                            if (isIngredientArabic && ingredientInput) {
+                                ingredientInput.value = await translateText(ingredientText);
+                            }
+                            
+                            // 4. تنبيه نجاح الترجمة للمستخدم
+                            alert("تمت ترجمة جميع المدخلات بنجاح إلى اللغة الإنجليزية!\n\nاضغط على زر الفحص الآن لرؤية النتيجة المعتمدة من المودل.");
+                            
+                        } catch (error) {
+                            alert("عذراً، تعذرت الترجمة التلقائية بسبب مشكلة في الاتصال. يرجى كتابة النصوص يدوياً بالإنجليزي.");
+                        } finally {
+                            checkBtn.innerText = originalText;
+                        }
+                    } else {
+                        // إذا رفض، نحدد له الخانة اللي فيها عربي عشان يعدلها بنفسه
+                        if (isProductArabic) {
+                            productNameInput.focus();
+                            productNameInput.select();
+                        } else if (isIngredientArabic && ingredientInput) {
+                            ingredientInput.focus();
+                            ingredientInput.select();
+                        }
+                    }
+                    
+                    return false;
+                }
+            }, true); // الأولوية القصوى لكودنا السحري
+        }
+    });
+    </script>
 </body>
 </html>

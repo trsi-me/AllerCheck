@@ -234,14 +234,10 @@ body[dir="rtl"] {
     margin-top: 30px;
 }
 
+/* --- تعديلات وإصلاحات صفحة حول التطبيق (About) لتدعم الاتجاهين --- */
 .about-content h3 {
     margin: 25px 0 12px;
     color: var(--color-dark);
-}
-
-.about-content ol {
-    margin: 15px 0 0 25px;
-    line-height: 1.8;
 }
 
 .about-content p {
@@ -261,10 +257,35 @@ body[dir="rtl"] {
     font-size: 0.9em;
 }
 
-.about-content ul {
+/* التنسيق الافتراضي للغة الإنجليزية LTR */
+body[dir="ltr"] .about-content {
+    text-align: left;
+}
+body[dir="ltr"] .about-content ol,
+body[dir="ltr"] .about-content ul {
     margin: 15px 0 0 25px;
     line-height: 1.8;
 }
+
+/* التنسيق الذكي للغة العربية RTL لحل مشكلة اليسار والتكرار */
+body[dir="rtl"] .about-content {
+    text-align: right;
+}
+
+body[dir="rtl"] .about-content ul,
+body[dir="rtl"] .about-content ol {
+    margin: 15px 25px 0 0; /* مسافة من اليمين بدلاً من اليسار */
+    padding-right: 20px; /* مسافة كافية لظهور النقاط الأصلية للـ HTML */
+    padding-left: 0;
+    text-align: right;
+}
+
+body[dir="rtl"] .about-content li {
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+/* ----------------------------------------------------------------- */
 
 .main-wrapper {
     display: grid;
@@ -497,6 +518,10 @@ body[dir="rtl"] {
     text-align: left;
 }
 
+body[dir="rtl"] .allergen-list-title {
+    text-align: right;
+}
+
 .allergen-list-items {
     display: flex;
     flex-wrap: wrap;
@@ -577,6 +602,10 @@ body[dir="rtl"] {
     font-size: 1.1em;
     color: var(--color-dark);
     line-height: 1.8;
+    text-align: left;
+}
+
+body[dir="rtl"] .result-error .result-message {
     text-align: right;
 }
 
@@ -611,6 +640,10 @@ body[dir="rtl"] {
     font-size: 1.1em;
     color: var(--color-dark);
     line-height: 1.8;
+    text-align: left;
+}
+
+body[dir="rtl"] .result-unknown .result-message {
     text-align: right;
 }
 

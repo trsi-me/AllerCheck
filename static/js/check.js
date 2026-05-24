@@ -27,6 +27,15 @@ async function checkProduct() {
     if (!productName.trim()) { alert('Please enter product name'); return; }
     if (userAllergens.length === 0) { alert('Please select at least one allergen'); return; }
 
+    // --- شرط الأمان القاطع لمنع الحروف العربية قبل الفحص ---
+    const arabicPattern = /[\u0600-\u06FF]/;
+    if (arabicPattern.test(productName)) {
+        alert("عذراً، يجب كتابة اسم المنتج باللغة الإنجليزية فقط لضمان دقة الفحص.\n\nPlease enter the product name in English only.");
+        document.getElementById('productName').focus();
+        document.getElementById('productName').select();
+        return; // إيقاف الدالة فوراً ومنع إرسال أي بيانات
+    }
+
     saveUserData();
 
     const resultSection = document.getElementById('resultSection');
